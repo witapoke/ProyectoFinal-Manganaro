@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   paymentLink.addEventListener('click', () => {
     if (carrito.length > 0) {
-      window.location = 'http://127.0.0.1:5500/payment.html'
+      window.location = './payment.html'
     } else {
       Swal.fire({
         title: 'Error!',
