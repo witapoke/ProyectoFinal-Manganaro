@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const productShowList = document.querySelector('.products-show-list')
+  const productsSection = document.querySelector('.show-products-section')
+
   const correoInput = document.getElementById('correo')
   const nameInput = document.getElementById('nombre')
   const lastNameInput = document.getElementById('apellido')
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   phoneInput.value = '1165237788'
 
   const carrito = JSON.parse(localStorage.getItem('carrito'))
+  const cartPrice = JSON.parse(localStorage.getItem('cartPrice'))
 
   function renderCartProducts() {
     productShowList.innerHTML = ''
@@ -30,6 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
       productShowList.appendChild(productsShowItem)
     })
   }
+
+  const cartPriceContainer = document.createElement('h3')
+  cartPriceContainer.style.color = 'white'
+  cartPriceContainer.textContent = 'El total de tu carrito es de $' + cartPrice
+
+  productsSection.appendChild(cartPriceContainer)
 
   renderCartProducts()
 })

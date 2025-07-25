@@ -268,10 +268,13 @@
 .payment-section {
   height: 50px;
   text-align: center;
+  margin: 10px;
+  padding: 3px;
 }
 
 .payment-link {
   text-decoration: none;
+  margin-top: 100px;
 }
 
 .payment-link:hover {
