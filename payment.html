@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main class="payment-main-container">
+      <a href="./index.html" class="back-btn">Go back</a>
+      <section class="form-section">
+        <form class="payment-form">
+          <div class="email-div">
+            <label for="correo">Correo</label>
+            <input type="text" id="correo" class="correo" />
+          </div>
+          <div class="name-div">
+            <div>
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" />
+            </div>
+            <div>
+              <label for="apellido">Apellido</label>
+              <input type="text" id="apellido" />
+            </div>
+          </div>
+          <div class="phone-div">
+            <label for="telefono">Telefono/Celular</label>
+            <input type="text" id="telefono" />
+          </div>
+          <button class="form-btn">Continuar con la compra</button>
+        </form>
+      </section>
+
+      <section class="show-products-section">
+        <h2>Tus productos</h2>
+        <ul class="products-show-list"></ul>
+      </section>
+    </main>
+    <script src="payment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

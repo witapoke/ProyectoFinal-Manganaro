@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">Nachos Shop</h1>
+      <nav class="navigation">
+        <div class="dropdown categories">
+          <h4 class="dropdown-select" id="dropdown-select">All</h4>
+          <ul class="dropdown-list dropdown-list-categories" id="dropdown-list">
+            <li class="dropdown-item">All</li>
+            <li class="dropdown-item">Furniture</li>
+            <li class="dropdown-item">Fragrances</li>
+            <li class="dropdown-item">Groceries</li>
+          </ul>
+        </div>
+
+        <p>Price: <span class="price"></span></p>
+        <input class="price-input" type="range" min="0" max="1500" value="0" />
+
+        <div class="input-div">
+          <input
+            type="text"
+            placeholder="Search products..."
+            class="input-search"
+            id="input-search"
+          />
+          <button class="search-btn">Search</button>
+        </div>
+
+        <div class="cart-div">
+          <i class="fa-solid fa-cart-shopping fa-xl cart-icon"></i>
+          <div class="cart-description">
+            <p>Cart</p>
+            <h4 class="cart-price">$</h4>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="products-list"></section>
+    <section class="carrito-section">
+      <div class="actions-div">
+        <i class="fa-solid fa-cart-shopping fa-xl cart-icon"></i>
+        <button class="clear-cart-btn">Clear cart</button>
+      </div>
+      <ul class="cart-items-list"></ul>
+      <section class="payment-section">
+        <a class="payment-link">Ir a pagar</a>
+      </section>
+    </section>
+    <script src="index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/8fabf42954.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

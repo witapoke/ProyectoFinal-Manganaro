@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  background-color: #232559;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+.title {
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 75%;
+  color: white;
+}
+
+.input-search {
+  width: 250px;
+  height: 45px;
+  border-radius: 6px;
+  padding: 0 15px;
+  font-size: 17px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.input-search::placeholder {
+  color: white;
+}
+
+.dropdown {
+  text-align: center;
+  position: relative;
+  width: 230px;
+}
+
+.dropdown-select {
+  font-size: 18px;
+  border: 2px solid white;
+  padding: 3px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-select:hover {
+  background-color: #404e7c;
+  border: 2px solid orange;
+}
+
+.dropdown-list {
+  list-style: none;
+  position: absolute;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  transform: translateX(-50%);
+  display: none;
+  width: 100%;
+  background-color: #404e7c;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.dropdown-item {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+}
+
+.dropdown-item:hover {
+  background-color: #232559;
+  color: white;
+}
+
+.open-menu {
+  display: inline;
+}
+
+.cart-div,
+.user-div {
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+  padding: 5px;
+  align-items: center;
+  width: 120px;
+  font-size: 17px;
+}
+
+.cart-description,
+.user-description {
+  text-align: center;
+}
+
+.products-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin: 10px;
+}
+
+.products-list-item {
+  background-color: gray;
+  padding: 10px;
+  text-align: center;
+  border: 3px solid black;
+  cursor: pointer;
+}
+
+.products-list-item:hover {
+  background-color: #404e7c;
+}
+
+.addBtn {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  width: 80px;
+  margin: 5px;
+}
+
+.addBtn:hover {
+  background-color: cadetblue;
+  border-radius: 6px;
+}
+
+.removeBtn {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  width: 80px;
+  margin: 5px;
+}
+
+.removeBtn:hover {
+  background-color: darkred;
+  border-radius: 6px;
+}
+
+.product-price {
+  font-weight: 600;
+}
+
+.pricing-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  margin: 0px 10px;
+}
+
+.carrito-section {
+  background-color: beige;
+  width: 400px;
+  min-height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  padding: 10px;
+}
+
+.actions-div {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.clear-cart-btn {
+  width: 120px;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: gray;
+  color: white;
+  border: none;
+  /* font-size: 15px; */
+}
+
+.clear-cart-btn:hover {
+  color: red;
+  border: 2px solid red;
+  background-color: black;
+}
+
+.cart-items-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.cart-item {
+  background-color: gray;
+  text-align: center;
+  margin: 5px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 6px;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+.product-title-cart {
+  font-size: 14px;
+}
+
+.btns-div-cart-item {
+  display: flex;
+}
+
+.pricing-div-cart-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.open-carrito {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-btn {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  width: 80px;
+  margin: 5px;
+  color: white;
+}
+
+.payment-section {
+  height: 50px;
+  text-align: center;
+}
+
+.payment-link {
+  text-decoration: none;
+}
+
+.payment-link:hover {
+  background-color: #232559;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.payment-link {
+  cursor: pointer;
+}
+
+.payment-main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  gap: 15px;
+  background-color: rgb(241, 230, 218);
+}
+
+.form-section {
+  background-color: #2b2c58;
+  height: 350px;
+  width: 35%;
+  padding: 10px;
+  color: white;
+}
+
+.show-products-section {
+  background-color: #2b2c58;
+  min-height: 600px;
+  width: 30%;
+  padding: 10px;
+  border-radius: 6px;
+  h2 {
+    color: white;
+    margin-left: 10px;
+  }
+}
+
+.email-div,
+.phone-div {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  input {
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+.name-div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    width: 100%;
+    input {
+      width: 100%;
+      padding: 5px;
+    }
+  }
+}
+
+.form-btn {
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.products-show-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.products-show-item {
+  text-align: center;
+  padding: 10px;
+  background-color: beige;
+  margin: 5px;
+}
+
+.back-btn {
+  background-color: rgb(241, 230, 218);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
