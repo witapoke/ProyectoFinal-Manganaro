@@ -1,0 +1,84 @@
+.sideCart {
+  width: 400px;
+  background-color: white;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  min-height: 100vh;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+}
+
+.sideCartList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  list-style: none;
+  gap: 10px;
+}
+
+.sideCartItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  min-height: auto;
+  margin: 10px;
+  gap: 10px;
+  border: 2px solid black;
+}
+
+.pricenqty {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  justify-content: space-around;
+}
+
+.sideCartImage {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  object-fit: contain;
+  border-bottom: 2px solid black;
+}
+
+.sideCartCloseBtn {
+  margin: 5px auto;
+  width: 50px;
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sideCartCloseBtn:hover {
+  background-color: lightslategray;
+}
+
+.sideCartFinishBtn {
+  margin: 20px;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  border: 2px solid black;
+  text-decoration: none;
+  background-color: transparent;
+}
+.sideCartFinishBtn:hover {
+  border: 1px solid black;
+}
+
+.remove-add-btns {
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sideCartAddBtn,
+.pricenqty {
+  cursor: pointer;
+}

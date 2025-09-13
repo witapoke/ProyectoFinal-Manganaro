@@ -1,0 +1,95 @@
+.cartContainer {
+  display: flex;
+  height: 100vh;
+  border-top: 3px solid black;
+  background-color: gray;
+}
+
+.cartPayment {
+  height: 100%;
+  width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50%;
+  margin: 10px auto;
+  gap: 10px;
+}
+
+.inputDivision {
+  display: flex;
+  gap: 10px;
+}
+
+.customLabel {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.inputContact {
+  font-size: 17px;
+  padding: 8px 14px;
+  width: 100%;
+  outline: none;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #c4d1eb;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px 0px #e2e2e2;
+  transition: 0.3s ease;
+}
+
+.inputContact:focus {
+  background: #f2f2f2;
+  border: 1px solid #5a7ec7;
+  border-radius: 10px;
+}
+
+.inputContact::placeholder {
+  color: #dddddd;
+}
+
+.finishPurchaseBtn {
+  background-color: rgb(36, 68, 150);
+  color: white;
+  width: 50%;
+  margin: 10px auto;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.finishPurchaseBtn:hover {
+  font-weight: 600;
+}
+
+.cartProducts {
+  height: 80%;
+  width: 50%;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.productsDiv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+}
+
+.descriptionDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+}

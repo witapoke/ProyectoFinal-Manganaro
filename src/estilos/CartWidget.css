@@ -1,0 +1,22 @@
+.cart-container {
+  display: flex;
+  width: 180px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 25px;
+  width: 90px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cart-description {
+  text-align: center;
+}
+
+.cart-icon:hover {
+  background-color: rgb(88, 194, 173);
+}
