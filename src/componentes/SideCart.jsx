@@ -16,10 +16,12 @@ const SideCart = () => {
           <SideCartItem item={item} key={item.id} />
         ))}
       </ul>
-      {cart.length > 0 && (
+      {cart.length > 0 ? (
         <Link to={'/cart'}>
           <button className='sideCartFinishBtn'>Continuar compra</button>
         </Link>
+      ) : (
+        <h4 className='emptyCart'>Carrito vacio</h4>
       )}
     </div>
   )

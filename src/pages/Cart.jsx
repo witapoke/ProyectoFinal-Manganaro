@@ -2,6 +2,14 @@ import { useContext, useEffect, useState } from 'react'
 import '../estilos/Cart.css'
 import '../estilos/cartItem.css'
 import { CartContext } from '../context/CartContext'
+import { useParams } from 'react-router-dom'
+import { db } from '../firebase-config'
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  getDocs,
+} from 'firebase/firestore'
 
 const Cart = () => {
   const { cart, getFromLocalStorage, cartPrice } = useContext(CartContext)
@@ -23,6 +31,32 @@ const Cart = () => {
     provincia: 'Buenos Aires',
     telefono: '1122557755',
   })
+  const [comprobantes, setComprobantes] = useState([])
+  const [finishedPurchase, setFinishedPurchase] = useState(false)
+
+  const finishPurchase = async () => {
+    const purchaseData = {
+      userID: crypto.randomUUID(),
+      purchaseID: crypto.randomUUID(),
+      productsDetails: cart,
+    }
+    try {
+      const purchaseDoc = await addDoc(collection(db, 'comprobantes'), {
+        ...purchaseData,
+        creationDate: serverTimestamp(),
+      })
+      const getPurchaseDocs = await getDocs(collection(db, 'comprobantes'))
+      const newComprobantes = getPurchaseDocs.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+
+      setComprobantes(newComprobantes)
+      setFinishedPurchase(true)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <main className='cartContainer'>
@@ -92,17 +126,25 @@ const Cart = () => {
             value={data.telefono}
           />
         </div>
-        <button className='finishPurchaseBtn'>Pagar ahora</button>
+        <button
+          onClick={() => finishPurchase()}
+          disabled={finishedPurchase}
+          className={
+            finishedPurchase === true ? 'disabledBtn' : 'finishPurchaseBtn'
+          }
+        >
+          Pagar ahora
+        </button>
       </section>
       <section className='cartProducts'>
         <div className='productsDiv'>
           {cart.map((item) => (
-            <div class='card'>
+            <div className='card' key={item.id}>
               <img src={item.thumbnail} className='cardImage' />
-              <div class='card-body'>
-                <h2 class='card-title'>{item.title}</h2>
-                <p class='card-text'>${item.price} </p>
-                <p class='card-text'>Qty:{item.qty}</p>
+              <div className='card-body'>
+                <h2 className='card-title'>{item.title}</h2>
+                <p className='card-text'>${item.price} </p>
+                <p className='card-text'>Qty:{item.qty}</p>
               </div>
             </div>
           ))}
@@ -115,6 +157,17 @@ const Cart = () => {
           </div>
         </div>
       </section>
+      {finishedPurchase ? (
+        <section className='finishPurchaseToast'>
+          <h2>Compra realizada con exito</h2>
+          <p>Resumen de la compra</p>
+          {comprobantes.map((comprobante) => (
+            <li key={comprobante.id}>ID de la compra:{comprobante.userID}</li>
+          ))}
+        </section>
+      ) : (
+        ''
+      )}
     </main>
   )
 }

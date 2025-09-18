@@ -67,6 +67,18 @@
   cursor: pointer;
 }
 
+.disabledBtn {
+  background-color: gray;
+  color: white;
+  width: 50%;
+  margin: 10px auto;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  text-decoration: line-through;
+}
+
 .finishPurchaseBtn:hover {
   font-weight: 600;
 }
@@ -92,4 +104,15 @@
   justify-content: space-around;
   gap: 20px;
   padding: 10px;
+}
+
+.finishPurchaseToast {
+  position: absolute;
+  top: 20%;
+  margin-left: 35%;
+  z-index: 1;
+  background-color: red;
+  width: 500px;
+  height: 500px;
+  color: white;
 }
