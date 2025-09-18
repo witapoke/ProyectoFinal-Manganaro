@@ -2,17 +2,19 @@ import { useContext, useEffect, useState } from 'react'
 import '../estilos/Cart.css'
 import '../estilos/cartItem.css'
 import { CartContext } from '../context/CartContext'
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { db } from '../firebase-config'
 import {
   collection,
   addDoc,
   serverTimestamp,
   getDocs,
+  deleteDoc,
 } from 'firebase/firestore'
 
 const Cart = () => {
-  const { cart, getFromLocalStorage, cartPrice } = useContext(CartContext)
+  const { cart, getFromLocalStorage, cartPrice, setCart } =
+    useContext(CartContext)
 
   useEffect(() => {
     getFromLocalStorage()
@@ -56,6 +58,12 @@ const Cart = () => {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const closeToast = async () => {
+    setCart([])
+    setFinishedPurchase(false)
+    setComprobantes([])
   }
 
   return (
@@ -159,11 +167,49 @@ const Cart = () => {
       </section>
       {finishedPurchase ? (
         <section className='finishPurchaseToast'>
-          <h2>Compra realizada con exito</h2>
-          <p>Resumen de la compra</p>
+          <h2 style={{ fontSize: '30px' }}>Compra realizada con exito</h2>
+          <p
+            style={{
+              fontSize: '20px',
+              marginBottom: '35px',
+              marginTop: '20px',
+              textDecoration: 'underline',
+            }}
+          >
+            Resumen de la compra
+          </p>
           {comprobantes.map((comprobante) => (
-            <li key={comprobante.id}>ID de la compra:{comprobante.userID}</li>
+            <li key={comprobante.id} className='comprobantesList'>
+              <p>
+                ID de la compra: <strong>{comprobante.userID}</strong>
+              </p>
+              <p>
+                Compra realizada por:{' '}
+                <strong>
+                  {data.nombre} {data.apellido}
+                </strong>
+              </p>
+              <p>
+                Total de productos comprados: <strong> {cart.length} </strong>{' '}
+              </p>
+              <p>
+                Precio final <strong>: ${cartPrice}</strong>{' '}
+              </p>
+              <p>
+                Metodo de envio: <strong>Entrega a domicilio</strong>
+              </p>
+            </li>
           ))}
+          <p style={{ marginTop: '20px' }}>
+            Se te enviará una notificación al mail para informarte acerca del
+            estado de tus productos
+          </p>
+          <Link to='/'>
+            {' '}
+            <button className='closeToastBtn' onClick={() => closeToast()}>
+              Realizar otra compra
+            </button>
+          </Link>
         </section>
       ) : (
         ''

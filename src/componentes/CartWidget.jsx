@@ -3,10 +3,6 @@ import '../estilos/CartWidget.css'
 import { memo, useContext, useEffect } from 'react'
 
 const CartWidget = ({ price }) => {
-  useEffect(() => {
-    console.log('cart widget render')
-  })
-
   const { setCartOn, cartOn, cartPrice } = useContext(CartContext)
 
   return (

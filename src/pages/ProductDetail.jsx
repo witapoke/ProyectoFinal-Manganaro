@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { db } from '../firebase-config'
 import { collection, query, getDocs, where } from 'firebase/firestore'
 import '../estilos/ProductDetail.css'
+import { ProductsContext } from '../context/ProductsContext'
+import { CartContext } from '../context/CartContext'
+import SideCart from '../componentes/SideCart'
 
 const ProductDetail = () => {
   const [product, setProduct] = useState([])
+  const { products } = useContext(ProductsContext)
+  const { addToCart, cartOn } = useContext(CartContext)
 
   const params = useParams()
   const productsCollectionRef = collection(db, 'products')
@@ -15,14 +20,14 @@ const ProductDetail = () => {
     where('title', '==', params.detail)
   )
 
-  useEffect(() => {
-    const fetchByName = async () => {
-      const data = await getDocs(nameQuery)
-      setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
+  const fetchByName = async () => {
+    const data = await getDocs(nameQuery)
+    setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  }
 
+  useEffect(() => {
     fetchByName()
-  }, [])
+  }, [fetchByName])
 
   return (
     <div>
@@ -34,7 +39,12 @@ const ProductDetail = () => {
             <div className='ProductDetailDescrption'>
               <p className='product-price'>${product.price}</p>
               <p className='product-description'>{product.description}</p>
-              <button className='addBtn'>Add To Cart</button>
+              <button
+                className='addBtn'
+                onClick={() => addToCart(products, product.id)}
+              >
+                Add To Cart
+              </button>
             </div>
           </li>
           <li className='productInfoContainer'>
@@ -46,6 +56,7 @@ const ProductDetail = () => {
           </li>
         </div>
       ))}
+      {cartOn && <SideCart />}
     </div>
   )
 }
