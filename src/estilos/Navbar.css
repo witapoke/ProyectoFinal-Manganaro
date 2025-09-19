@@ -69,9 +69,7 @@
   flex-direction: column;
   align-items: center;
   border: 2px solid black;
-  /* border-right: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black; */
+  z-index: 1;
 }
 
 .category-item {

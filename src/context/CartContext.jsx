@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useEffect } from 'react'
+import Swal from 'sweetalert2'
 
 export const CartContext = createContext()
 

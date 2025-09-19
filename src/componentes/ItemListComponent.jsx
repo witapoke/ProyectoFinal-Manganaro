@@ -2,11 +2,23 @@ import '../estilos/ItemListComponent.css'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext.jsx'
 import { ProductsContext } from '../context/ProductsContext.jsx'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 const ItemListComponent = ({ product }) => {
   const { addToCart } = useContext(CartContext)
   const { products } = useContext(ProductsContext)
+
+  const [isAnimated, setIsAnimated] = useState(false)
+
+  const handleAnimation = () => {
+    if (isAnimated) return
+
+    setIsAnimated(true)
+
+    setTimeout(() => {
+      setIsAnimated(false)
+    }, 500)
+  }
 
   return (
     <li className='itemContainer'>
@@ -16,11 +28,15 @@ const ItemListComponent = ({ product }) => {
       <h3 className='productTitle'>{product.title}</h3>
       <div className='productDescription'>
         <p className='productPrice'>Price: ${product.price}</p>
-        <p className='productQty'>Qty:1</p>
       </div>
       <button
-        className='addToCartBtn'
-        onClick={() => addToCart(products, product.id)}
+        className={
+          isAnimated ? 'addToCartBtn addToCartBtnAnimation' : 'addToCartBtn'
+        }
+        onClick={() => {
+          addToCart(products, product.id)
+          handleAnimation()
+        }}
       >
         ➕
       </button>

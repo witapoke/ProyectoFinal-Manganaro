@@ -11,6 +11,17 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([])
   const { products } = useContext(ProductsContext)
   const { addToCart, cartOn } = useContext(CartContext)
+  const [isAnimated, setIsAnimated] = useState(false)
+
+  const handleAnimation = () => {
+    if (isAnimated) return
+
+    setIsAnimated(true)
+
+    setTimeout(() => {
+      setIsAnimated(false)
+    }, 500)
+  }
 
   const params = useParams()
   const productsCollectionRef = collection(db, 'products')
@@ -30,7 +41,7 @@ const ProductDetail = () => {
   }, [fetchByName])
 
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       {product.map((product) => (
         <div className='mainProductDetailContainer' key={product.id}>
           <li className='productDetailContainer' key={product.id}>
@@ -40,8 +51,13 @@ const ProductDetail = () => {
               <p className='product-price'>${product.price}</p>
               <p className='product-description'>{product.description}</p>
               <button
-                className='addBtn'
-                onClick={() => addToCart(products, product.id)}
+                className={
+                  isAnimated ? 'addToCartBtnAnimation addBtn' : 'addBtn'
+                }
+                onClick={() => {
+                  addToCart(products, product.id)
+                  handleAnimation()
+                }}
               >
                 Add To Cart
               </button>
