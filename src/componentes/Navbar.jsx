@@ -16,7 +16,7 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchMessage, setSearchMessage] = useState('')
   const { setProducts } = useContext(ProductsContext)
-  const { getPriceFromLocalStorage, cart } = useContext(CartContext)
+  const { getPriceFromLocalStorage, cartOn } = useContext(CartContext)
 
   const productsCollectionRef = collection(db, 'products')
 
@@ -35,7 +35,7 @@ const NavBar = () => {
       } else {
         Swal.fire({
           title: 'Error!',
-          text: 'No encontramos el producto requerido, lo sentimos mucho',
+          text: 'No encontramos el producto requerido, lo sentimos',
           icon: 'error',
           confirmButtonText: 'Cool',
         })
@@ -99,7 +99,6 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-
       <div className='search-div'>
         <input
           type='text'
@@ -109,7 +108,7 @@ const NavBar = () => {
           onChange={handleChange}
         />
       </div>
-      <CartWidget />
+      {cartOn ? '' : <CartWidget />}
     </nav>
   )
 }

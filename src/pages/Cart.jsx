@@ -15,7 +15,7 @@ import {
 } from 'firebase/firestore'
 
 const Cart = () => {
-  const { cart, getFromLocalStorage, cartPrice, setCart } =
+  const { cart, getFromLocalStorage, cartPrice, setCart, setCartOn } =
     useContext(CartContext)
 
   useEffect(() => {
@@ -57,6 +57,7 @@ const Cart = () => {
 
       setComprobantes(newComprobantes)
       setFinishedPurchase(true)
+      setCartOn(false)
     } catch (error) {
       console.error(error)
     }
@@ -165,7 +166,7 @@ const Cart = () => {
             finishedPurchase === true ? 'disabledBtn' : 'finishPurchaseBtn'
           }
         >
-          Pagar ahora
+          Realizar pago
         </button>
       </section>
       <section className='cartProducts'>
