@@ -1,17 +1,15 @@
-import { useContext, useState } from 'react'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import { db } from '../firebase-config'
 import { useParams } from 'react-router-dom'
 import ItemListComponent from '../componentes/ItemListComponent'
 import { ProductsContext } from '../context/ProductsContext'
 import { CartContext } from '../context/CartContext'
-import SideCartItem from '../componentes/SideCartItem'
 import SideCart from '../componentes/SideCart'
 
 const FilteredProducts = () => {
   const { products, setProducts } = useContext(ProductsContext)
-  const { cartOn, cart, setCartOn } = useContext(CartContext)
+  const { cartOn } = useContext(CartContext)
 
   const params = useParams()
 

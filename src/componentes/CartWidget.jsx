@@ -1,8 +1,8 @@
 import { CartContext } from '../context/CartContext'
 import '../estilos/CartWidget.css'
-import { memo, useContext, useEffect } from 'react'
+import { memo, useContext } from 'react'
 
-const CartWidget = ({ price }) => {
+const CartWidget = () => {
   const { setCartOn, cartPrice, cart } = useContext(CartContext)
 
   return (

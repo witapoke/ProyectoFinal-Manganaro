@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import '../estilos/Cart.css'
-import '../estilos/cartItem.css'
+import '../estilos/CartItem.css'
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import { db } from '../firebase-config'
