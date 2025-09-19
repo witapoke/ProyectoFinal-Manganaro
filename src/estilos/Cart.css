@@ -148,3 +148,7 @@
 .closeToastBtn:hover {
   background-color: rgb(213, 212, 212);
 }
+
+.card-body {
+  width: 100%;
+}

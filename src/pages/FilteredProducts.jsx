@@ -7,6 +7,7 @@ import ItemListComponent from '../componentes/ItemListComponent'
 import { ProductsContext } from '../context/ProductsContext'
 import { CartContext } from '../context/CartContext'
 import SideCartItem from '../componentes/SideCartItem'
+import SideCart from '../componentes/SideCart'
 
 const FilteredProducts = () => {
   const { products, setProducts } = useContext(ProductsContext)
@@ -41,21 +42,7 @@ const FilteredProducts = () => {
       ) : (
         <h1>Cargando...</h1>
       )}
-      {cartOn && (
-        <div className='sideCart'>
-          <p onClick={() => setCartOn(false)} className='sideCartCloseBtn'>
-            ❌
-          </p>
-          <ul className='sideCartList'>
-            {cart.map((item) => (
-              <SideCartItem item={item} key={item.id} />
-            ))}
-          </ul>
-          {cart.length > 0 && (
-            <button className='sideCartFinishBtn'>Finalizar compra</button>
-          )}
-        </div>
-      )}
+      {cartOn && <SideCart />}
     </>
   )
 }

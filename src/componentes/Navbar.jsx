@@ -1,14 +1,15 @@
 import { memo, useEffect, useState } from 'react'
 import CartWidget from './CartWidget'
-import '../estilos/navbar.css'
+import '../estilos/Navbar.css'
 import BrandLogo from '../assets/brand-logo.jpg'
-import { Link, Navigate } from 'react-router-dom'
-import { collection, getDocs, where, query, orderBy } from 'firebase/firestore'
+import { Link } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../firebase-config'
 import { useContext } from 'react'
 import { ProductsContext } from '../context/ProductsContext'
 import UseDebounce from '../Hooks/UseDebounce'
 import { CartContext } from '../context/CartContext'
+import Swal from 'sweetalert2'
 
 const NavBar = () => {
   const [input, setInput] = useState('')
@@ -32,7 +33,12 @@ const NavBar = () => {
         setProducts(results)
         setSearchMessage('')
       } else {
-        alert('No encontramos ese producto, lo lamentamos mucho sumimasen')
+        Swal.fire({
+          title: 'Error!',
+          text: 'No encontramos el producto requerido, lo sentimos mucho',
+          icon: 'error',
+          confirmButtonText: 'Cool',
+        })
         setInput('')
         setProducts([])
       }

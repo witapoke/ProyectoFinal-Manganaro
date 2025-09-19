@@ -9,7 +9,9 @@ import {
   addDoc,
   serverTimestamp,
   getDocs,
-  deleteDoc,
+  query,
+  limit,
+  writeBatch,
 } from 'firebase/firestore'
 
 const Cart = () => {
@@ -60,10 +62,32 @@ const Cart = () => {
     }
   }
 
+  const deleteCollection = async (collectionName, docsToDelete) => {
+    try {
+      const collectionRef = collection(db, collectionName)
+      const q = query(collectionRef, limit(docsToDelete))
+
+      let data = await getDocs(q)
+
+      while (data.docs.length > 0) {
+        const batch = writeBatch(db)
+
+        data.docs.forEach((doc) => {
+          batch.delete(doc.ref)
+        })
+
+        await batch.commit()
+      }
+    } catch (error) {
+      console.error('Error al borrar la colección:', error)
+    }
+  }
+
   const closeToast = async () => {
     setCart([])
     setFinishedPurchase(false)
     setComprobantes([])
+    await deleteCollection('comprobantes', 500)
   }
 
   return (

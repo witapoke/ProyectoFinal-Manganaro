@@ -62,7 +62,12 @@ export const CartProvider = ({ children }) => {
         setCart(newCart)
       }
     } else {
-      alert('No encontramos el producto requerido para añadir')
+      Swal.fire({
+        title: 'Error!',
+        text: 'No encontramos el producto requerido para añadir, lo sentimos mucho',
+        icon: 'error',
+        confirmButtonText: 'Cool',
+      })
     }
   }
 
